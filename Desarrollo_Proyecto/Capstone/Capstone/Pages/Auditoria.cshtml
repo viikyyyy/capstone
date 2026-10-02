@@ -1,5 +1,0 @@
-@page
-@model Capstone.Pages.AuditoriaModel
-<div class="container py-4"><div class="d-flex justify-content-between"><h1>Auditoría</h1><a class="btn btn-outline-secondary" href="/">Volver</a></div>
-<form method="get" class="row g-2 my-3"><div class="col-md-3"><input class="form-control" asp-for="IdUsuario" placeholder="ID usuario" /></div><div class="col-md-3"><input class="form-control" asp-for="Accion" placeholder="Acción" /></div><div class="col-md-2"><input class="form-control" asp-for="Desde" type="date" /></div><div class="col-md-2"><input class="form-control" asp-for="Hasta" type="date" /></div><div class="col-md-2"><button class="btn btn-primary w-100">Filtrar</button></div></form>
-<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Fecha</th><th>Usuario</th><th>Acción</th><th>Entidad</th><th>Detalle</th><th>IP</th></tr></thead><tbody>@foreach(var r in Model.Registros){<tr><td>@r.FechaHora.ToString("dd/MM/yyyy HH:mm")</td><td>@r.Usuario?.Correo (@r.IdUsuario)</td><td>@r.Accion</td><td>@r.EntidadAfectada #@r.IdEntidadAfectada</td><td>@r.Detalle</td><td>@r.IpOrigen</td></tr>}</tbody></table></div></div>

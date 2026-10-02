@@ -1,7 +1,0 @@
-@page
-@model Capstone.Pages.RespaldosModel
-<div class="container py-4"><div class="d-flex justify-content-between"><h1>Respaldos</h1><a class="btn btn-outline-secondary" href="/">Volver</a></div>
-<p class="text-muted">Estado de los respaldos registrados en el sistema.</p>
-<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Tipo</th><th>Estado</th><th>Inicio</th><th>Fin</th><th>Destino</th><th>Mensaje</th></tr></thead><tbody>
-@foreach (var respaldo in Model.Respaldos) { <tr><td>@respaldo.TipoBackup</td><td>@respaldo.Estado</td><td>@respaldo.FechaInicio.ToString("dd/MM/yyyy HH:mm")</td><td>@respaldo.FechaFin?.ToString("dd/MM/yyyy HH:mm")</td><td>@respaldo.Destino</td><td>@respaldo.MensajeError</td></tr> }
-</tbody></table></div></div>
