@@ -1,0 +1,12 @@
+@page
+@model Capstone.Pages.SubirArchivoModel
+<div class="container py-4"><h1>Adjuntar archivo</h1><p>Ficha #@Model.IdFicha</p>
+@if (Model.ErrorMessage != null) { <div class="alert alert-danger">@Model.ErrorMessage</div> }
+<form method="post" enctype="multipart/form-data" class="col-md-7">
+    <input type="hidden" asp-for="IdFicha" />
+    <label class="form-label" for="Archivo">Archivo clínico</label>
+    <input class="form-control" asp-for="Archivo" type="file" required />
+    <div class="form-text">Tamaño máximo: 20 MB.</div>
+    <button class="btn btn-primary mt-3">Subir archivo</button>
+    <a class="btn btn-secondary mt-3" href="/">Cancelar</a>
+</form></div>

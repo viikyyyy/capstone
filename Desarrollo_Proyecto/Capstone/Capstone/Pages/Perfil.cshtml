@@ -1,0 +1,9 @@
+@page
+@model Capstone.Pages.PerfilModel
+<div class="container py-4"><h1>Mi perfil</h1><form method="post" class="col-md-6">
+<label class="form-label">Nombre</label><input class="form-control" asp-for="Datos.Pnombre" />
+<label class="form-label">Apellido paterno</label><input class="form-control" asp-for="Datos.Apellidop" />
+<label class="form-label">Apellido materno</label><input class="form-control" asp-for="Datos.Apellidom" />
+<label class="form-label">Correo</label><input class="form-control" asp-for="Datos.Correo" type="email" />
+<button class="btn btn-primary mt-3">Guardar</button> <a class="btn btn-secondary mt-3" href="/">Volver</a>
+</form>@if (Model.Mensaje != null) { <div class="alert alert-success mt-3">@Model.Mensaje</div> }</div>

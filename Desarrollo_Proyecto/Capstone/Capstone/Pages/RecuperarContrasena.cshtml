@@ -1,0 +1,3 @@
+@page
+@model Capstone.Pages.RecuperarContrasenaModel
+<div class="container py-5"><div class="card col-md-6 mx-auto"><div class="card-body"><h1>Recuperar contraseña</h1><form method="post"><label class="form-label">Correo o RUT</label><input class="form-control" asp-for="Identificador" required /><button class="btn btn-primary mt-3">Generar código</button></form>@if(Model.Mensaje != null){<div class="alert alert-info mt-3">@Model.Mensaje</div>}@if(Model.CodigoDemo != null){<div class="alert alert-warning">Código demo: <strong>@Model.CodigoDemo</strong><br /><a href="/RestablecerContrasena">Continuar al restablecimiento</a></div>}</div></div></div>

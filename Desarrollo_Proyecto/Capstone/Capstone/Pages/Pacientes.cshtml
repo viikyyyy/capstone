@@ -1,0 +1,24 @@
+@page
+@model Capstone.Pages.PacientesModel
+@{
+    ViewData["Title"] = "Pacientes";
+}
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Pacientes</h1><a class="btn btn-outline-secondary" href="/">Volver al dashboard</a>
+    </div>
+    <form method="get" class="input-group mb-4">
+        <input class="form-control" name="busqueda" value="@Model.Busqueda" placeholder="Buscar por RUT o apellido" />
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </form>
+    <div class="list-group">
+    @foreach (var paciente in Model.Resultados)
+    {
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <span><strong>@paciente.Pnombre @paciente.Apellidop @paciente.Apellidom</strong><br />RUT: @paciente.Rut-@paciente.DvRut</span>
+            <a class="btn btn-sm btn-outline-primary" href="/DetallePaciente?id_paciente=@paciente.IdPaciente">Ver historial</a>
+        </div>
+    }
+    </div>
+    @if (Model.Resultados.Count == 0) { <p class="text-muted mt-3">No se encontraron pacientes.</p> }
+</div>

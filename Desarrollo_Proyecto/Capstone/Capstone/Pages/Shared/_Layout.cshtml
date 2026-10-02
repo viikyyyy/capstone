@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Hospital Aquiles Miro</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Capstone.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark hospital-navbar shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" asp-page="/Index"><img src="~/images/Logo.jpeg" alt="" class="brand-logo" /> <span>Hospital Aquiles Miro</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavigation">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="/Index">Dashboard</a>
+                        </li>
+                        @if (User.IsInRole("medico") || User.IsInRole("administrativo") || User.IsInRole("admin")) { <li class="nav-item"><a class="nav-link" asp-page="/Pacientes">Pacientes</a></li> }
+                        @if (User.IsInRole("paciente")) { <li class="nav-item"><a class="nav-link" asp-page="/MisFichas">Mis fichas</a></li> }
+                        <li class="nav-item"><a class="nav-link" asp-page="/Perfil">Mi perfil</a></li>
+                        @if (User.IsInRole("administrativo") || User.IsInRole("admin")) { <li class="nav-item"><a class="nav-link" asp-page="/Auditoria">Auditoría</a></li><li class="nav-item"><a class="nav-link" asp-page="/GestionUsuarios">Usuarios</a></li> }
+                        @if (User.Identity?.IsAuthenticated == true) { <li class="nav-item ms-lg-2"><form method="post" asp-page="/Account/Logout"><button class="btn btn-sm btn-light text-primary">Cerrar sesión</button></form></li> }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container page-shell">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-white">
+        <div class="container">
+            &copy; 2026 - Capstone - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
